@@ -1,0 +1,106 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .full-height {
+    height: 100%;
+  }
+  
+  .card {
+    
+    /* background-color: #2b2b3a; */
+    background-color: #2b2b3a;;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(36, 125, 209, 0.2);
+    border: 2px solid rgb(24, 180, 180);
+    color: #ffffff;
+    
+  }
+  
+  .card-header {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffff;
+    margin-bottom: 10px;
+  }
+
+  
+  
+  .card-content p, .card-content li {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #dddddd;
+    
+  }
+  
+  .dialog-title {
+    text-align: center;
+    color: #2b2b3a;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .dialog-actions {
+    margin-top: auto;
+    text-align: right;
+  }
+  
+  .dialog-actions button {
+    background-color: #00bcd4;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .dialog-actions button:hover {
+    background-color: #00acc1;
+  }
+  
+  
+  .product-item {
+    border: 2px solid #18b4b4; 
+    text-align: left;
+    list-style-type: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .product-item p{
+    text-align: left;
+  }
+
+
+
+
+
+
+  .product-item select {
+    width: 40%;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #18b4b4; 
+    border-radius: 4px;
+    background-color: #2b2b3a; 
+    color: #ffffff; 
+    outline: none;
+    margin-left: 20px;
+    
+  }
+  
+  .product-item select:focus {
+    border-color: #00acc1; 
+    box-shadow: 0 0 5px rgba(0, 172, 193, 0.5); 
+  }
+  
+  .product-item select option {
+    background-color: #2b2b3a; 
+    color: #ffffff; 
+  }
+  

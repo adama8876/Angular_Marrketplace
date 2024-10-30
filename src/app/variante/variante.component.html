@@ -1,0 +1,114 @@
+<!-- 
+<div>
+  <h2>Ajouter une Variante</h2>
+  <form (ngSubmit)="addVariant()">
+    <label for="variantType">Sélectionner une Variante-Type:</label>
+    <select [(ngModel)]="selectedVariantTypeId" name="variantType" required>
+      <option *ngFor="let type of variantTypes" [value]="type.id">{{ type.nom }}</option>
+    </select>
+
+    <label for="variantName">Nom de la Variante:</label>
+    <input [(ngModel)]="newVariantName" name="variantName" required />
+
+    <button type="submit">Ajouter Variante</button>
+  </form>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container mat-elevation-z3">
+  <div class="caption">
+    <div class="leftS">
+      <h6>Liste des Variantes |</h6>
+    </div>
+
+    <div class="rightS">
+      <div class="searchetajout">
+        <!-- Barre de recherche -->
+        <div class="search-box">
+          <button class="btn-search"><i class="fas fa-search"></i></button>
+          <input
+            matInput
+            (input)="onSearch($event)"
+            placeholder="Search"
+            class="input-search"
+          />
+        </div>
+
+        <!-- Bouton Ajouter une variante type -->
+        <button class="btn add-user-btn" (click)="ajoutervariante()"> 
+          Ajouter une Variante
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- --------------------------------------------------------TABLEAU------------------------------ -->
+  <div class="tablecontainer">
+    <table class="mat-elevation-z8 user-table tableS">
+      <!-- En-tête du tableau -->
+      <thead role="rowgroup">
+        <tr>
+          <th>Id</th>
+          <th>Nom Variante</th>
+          <th>Type de Variante</th>
+          <th>Date d'ajout</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+
+      <!-- Boucle sur les données récupérées depuis Firestore
+       
+      <tr *ngFor="let order of orders; let i = index">
+            <td>{{ i + 1 }}</td>-->
+      <tbody>
+        <tr *ngFor="let variant of filteredVariants; let i = index">
+          <td>{{ i+ 1 }}</td>
+          <td>{{ variant.nom }}</td>
+          <td>{{ variant.variantTypeNom }}</td>
+          <td>{{ variant.createdAt| date:'dd/MM/yyyy à HH:mm' }}</td>
+
+          <td>
+            <button class="btn_action1"  (click)="modifierVariante(variant)">
+              <i class="fa-regular fa-pen-to-square edit-icon"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn_action2"  (click)="supprimerVariante(variant.id)">
+              <i class="fa-solid fa-trash delete-icon"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator
+      [length]="variants.length"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      class="pagination"
+    >
+    </mat-paginator>
+  </div>
+</div>
+
+  

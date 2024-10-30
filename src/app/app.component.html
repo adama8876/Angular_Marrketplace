@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"
+    />
+  </head> 
+  <body>
+    <!-- Vérifiez l'état de l'utilisateur et affichez le contenu approprié -->
+    <mat-toolbar class="principal header" color="primary" *ngIf="logIN">
+      
+      <div class="containerR"  >
+        <div class="logo">
+          <!-- <img src="assets/logoo.png" alt="logo-mirashop" class="logoImg" /> -->
+           <!-- <h3 class="">Baikasugu</h3> -->
+        </div>
+        <mat-divider [inset]="true"></mat-divider>
+        <div class="toggle">
+          <button style="color: #008080"
+
+
+            class="toggle_btn"
+            aria-label="Menu icon"
+            matTooltip="Menu"
+            
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </div>
+      
+      <div class="containerL" >
+        <div class="user-email">
+          <span *ngIf="userEmail">{{ userEmail }}</span> <!-- Afficher l'email de l'utilisateur connecté -->
+        </div>
+        <div class="userpic">
+          <button mat-icon-button matTooltip="My Account" >
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <mat-menu #userAccountMenu></mat-menu>
+        </div>
+        <div class="i">
+          <button mat-icon-button (click)="logout()" matTooltip="Log out">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <!-- Si l'utilisateur est connecté, affichez le contenu principal -->
+    <mat-drawer-container class="containerprincipal" autosize *ngIf="logIN">
+      <mat-drawer #drawer class="sidebarcote" mode="side" position="start" opened="true">
+        <mat-nav-list>
+          <!-- Vos éléments de navigation -->
+          <mat-list-item class="mat-list-item active" routerLink="dashboard" routerLinkActive="active">
+            <button class="btn_menuaa" mat-button>
+              <mat-icon style="color: #008080, ">dashboard</mat-icon>
+              <span>Dashboard</span>
+            </button>
+          </mat-list-item>
+          <mat-list-item class="mat-list-item active" id="produitsItem" routerLink="produits" routerLinkActive="active">
+            <button class="btn_menuaa" mat-button>
+              <mat-icon style="color: #008080, ">redeem</mat-icon>
+              <span>Produits</span>
+            </button>
+          </mat-list-item>
+          
+          <!-- <mat-list-item class="mat-list-item active" id="livraisonsItem" routerLink="livraisons" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #ee4d2d">local_shipping</mat-icon>
+              <span>Livraisons</span>
+            </button>
+          </mat-list-item> -->
+          <mat-list-item class="mat-list-item active" id="categorieItem" routerLink="categories" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #008080">category</mat-icon>
+              <span>Catégories</span>
+            </button>
+          </mat-list-item>
+
+
+
+          <mat-list-item class="mat-list-item active" id="categorieItem" routerLink="sous-categorie" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #008080">label</mat-icon>
+              <span>Sous-catégories</span>
+            </button>
+          </mat-list-item>
+          <!-- <mat-list-item class="mat-list-item active" id="clientItem" routerLink="client" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #ee4d2d">people</mat-icon>
+              <span>Clients</span>
+            </button>
+          </mat-list-item> -->
+          <mat-list-item class="mat-list-item active" id="categorieItem" routerLink="variantes" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #008080">tune</mat-icon>
+              <span>Variantes</span>
+            </button>
+          </mat-list-item>
+
+          <!-- <mat-list-item class="mat-list-item active" id="payementItem" routerLink="payement" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #ee4d2d">monetization_on</mat-icon>
+              <span>Payements</span>
+            </button>
+          </mat-list-item> -->
+          <mat-list-item class="mat-list-item active" id="categorieItem" routerLink="variantes-types" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #008080">layers</mat-icon>
+              <span>Variantes-types</span>
+            </button>
+          </mat-list-item>
+
+
+
+          <mat-list-item class="mat-list-item active" id="commandeItem" routerLink="commandes" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #008080">shopping_cart</mat-icon>
+            <span>  Commandes</span>
+            </button>
+          </mat-list-item>
+
+          <!-- <mat-list-item class="mat-list-item active" id="personnelItem" routerLink="personnel" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #ee4d2d">supervisor_account</mat-icon>
+              <span>Personnels</span>
+            </button>
+          </mat-list-item> -->
+          <mat-list-item class="mat-list-item active" id="utilisateursItem" routerLink="utilisateurs" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #008080">group_add</mat-icon>
+             <span> Utilisateurs</span>
+            </button>
+          </mat-list-item>
+          <!-- <mat-list-item class="mat-list-item active" id="stockItem" routerLink="stock" routerLinkActive="active">
+            <button class="btn_menu" mat-button>
+              <mat-icon style="color: #ee4d2d">store_mall_directory</mat-icon>
+              <span>Stocks</span>
+            </button>
+          </mat-list-item> -->
+          <mat-list-item class="mat-list-item active" id="livparametresItem"  routerLinkActive="active">
+            <button id="parambtn" class="btn" mat-button>
+              <mat-icon style="color: #008080">settings</mat-icon>
+              <span>Paramètres</span>
+            </button>
+          </mat-list-item>
+          <!-- Ajoutez les autres éléments de navigation ici -->
+        </mat-nav-list>
+      </mat-drawer>
+
+      <mat-drawer-content>
+        <div style="min-height: 100vh; background-color: #e3f1ff; color: black; padding-top: 15px;">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+
+    <!-- Si l'utilisateur n'est pas connecté, affichez simplement le contenu de la route (login) -->
+    <div *ngIf="!logIN">
+      <router-outlet></router-outlet>
+    </div>
+  </body> 
+</html>

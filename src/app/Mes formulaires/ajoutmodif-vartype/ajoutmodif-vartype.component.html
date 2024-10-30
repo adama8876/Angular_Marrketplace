@@ -1,0 +1,40 @@
+<h6 mat-dialog-title class="mat-title dialog-title">
+    {{ isEditMode ? "Modifier le Type de Variante" : "Ajouter un Type de Variante" }}
+    <mat-icon mat-button (click)="onClose()" class="btn-close">close</mat-icon>
+  </h6>
+  
+  <mat-dialog-content class="mat-typography variant-type-form">
+    <form [formGroup]="variantTypeForm" class="form">
+      <!-- Input pour le nom de la variante -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nom de la Variante</mat-label>
+        <input matInput placeholder="Ex: Couleurs" formControlName="nom" />
+        <mat-error *ngIf="variantTypeForm.controls['nom'].invalid && variantTypeForm.controls['nom'].touched">
+          Le nom est requis.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Input pour le type de variante -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Type de Variante</mat-label>
+        <input matInput placeholder="Ex: Palette de couleurs" formControlName="type" />
+        <mat-error *ngIf="variantTypeForm.controls['type'].invalid && variantTypeForm.controls['type'].touched">
+          Le type est requis.
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end" class="dialog-actions">
+    <button mat-stroked-button color="warn" (click)="onReset()" class="btn-reset">Réinitialiser</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="variantTypeForm.invalid"
+      (click)="onSave()"
+      class="btn-submit"
+    >
+      {{ isEditMode ? "Modifier" : "Ajouter" }}
+    </button>
+  </mat-dialog-actions>
+  

@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Modifier la Catégorie' : 'Ajouter une Catégorie' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <!-- Nom de la catégorie -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nom de la catégorie</mat-label>
+      <input matInput formControlName="name" placeholder="Nom de la catégorie" />
+      <mat-error *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
+        Le nom est obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Image de la catégorie -->
+    <div class="file-input-container">
+      <label for="categoryImage">Sélectionner une image</label>
+      <input
+        type="file"
+        id="categoryImage"
+        (change)="onImageSelected($event)"
+        accept="image/*"
+      />
+      <mat-error *ngIf="categoryForm.get('image')?.invalid && categoryForm.get('image')?.touched">
+        L'image est obligatoire
+      </mat-error>
+
+      <!-- Affichage de l'image sélectionnée ou existante -->
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" alt="Aperçu de l'image" class="preview-image" />
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" [disabled]="categoryForm.invalid" (click)="onSubmit()">
+    {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+  </button>
+</mat-dialog-actions>

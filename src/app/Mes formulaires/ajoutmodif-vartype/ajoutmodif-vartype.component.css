@@ -1,0 +1,45 @@
+.dialog-title {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .btn-close {
+    /* display: flex; */
+    color: #f44336; /* Rouge pour la fermeture */
+    cursor: pointer;
+    /* align-self: flex-end; */
+  }
+  
+  .variant-type-form {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin: auto;
+  }
+  
+  .dialog-actions {
+    margin-top: 20px;
+  }
+  
+  .btn-reset {
+    color: #757575; /* Gris pour le bouton reset */
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .btn-submit {
+    color: white;
+    background-color: #1976d2; /* Couleur primaire pour le bouton soumettre */
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 20px;
+  }

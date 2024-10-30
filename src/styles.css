@@ -1,0 +1,106 @@
+You can add global styles to this file,
+and also import other style files :root {
+  --degraderblue: #0085ff;
+  --degraderblanc: #e3f1ff;
+  --Orangefort: #eb4028;
+  --violet: #eb2891;
+  --bluefort: #9747ff;
+  --mainColor: #008080;
+  --secondColor: #8c21ff;
+  --activeColor: #f4f8fa;
+  --gradientColor: linear-gradient(var(--mainColor), var(--secondColor));
+}
+
+/* styles.css ou styles.scss */
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  scrollbar-width: none;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #e3f1ff;
+  color: black;
+  /* padding-top: 30px; */
+}
+h5 {
+  /* color: #fff; */
+  margin:  0 0 15px !important; 
+  font-size: 22px;
+  color: black;
+}
+.test {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  color: #ee4d2d;
+}
+
+.mat-mdc-paginator-page-size-label {
+  display: none;
+}
+
+.p-toast {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.mat-mdc-paginator .mat-mdc-select-value {
+  color: rgb(100, 97, 97);
+}
+
+.mat-mdc-select-arrow {
+  color: rgb(66, 64, 64);
+}
+.mdc-dialog--open .mat-mdc-dialog-surface {
+  background: #fff;
+}
+mat-form-field .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #bec9c8;
+  border-radius: 10px;
+  
+  /* color: #ee4d2d; */
+}
+
+
+.mdc-text-field--no-label:not(.mdc-text-field--textarea)
+  .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+  color: #c01818;
+}
+.mat-button, .mat-form-field, .mat-input-element, .mat-card-title, .mat-card-content {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.edit-icon {
+  color: #673ab7;
+}
+
+/* .mat-mdc-form-field-infix{
+  height: 10px;
+  border: none;
+} */
+
+/* .mat-mdc-text-field-wrapper .mdc-text-field .ng-tns-c2400808035-17 .mdc-text-field--filled1{
+  height: 120px;
+} */
+
+
+
+
+.custom-dialog-container mat-dialog-content{
+  /* background-color: red; */
+  background-color: rgba(128, 128, 128, 0.274);
+  border-radius: 0;
+
+}

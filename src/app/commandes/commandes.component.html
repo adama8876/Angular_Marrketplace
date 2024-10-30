@@ -1,0 +1,91 @@
+
+
+
+
+<div class="table-container mat-elevation-z3">
+    <div class="caption">
+      <div class="leftS">
+        <h6>Liste des Commandes |</h6>
+      </div>
+  
+      <div class="rightS">
+        <div class="searchetajout">
+          <!-- Barre de recherche -->
+          <div class="search-box">
+            <button class="btn-search"><i class="fas fa-search"></i></button>
+            <input
+              matInput
+              (input)="filterelement($event)"
+              placeholder="Search"
+              class="input-search"
+            />
+          </div>
+
+          
+  
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="status-filter">
+        <select (change)="filterByStatus($event)" class="status-select">
+          <option value="">Tous les statuts</option>
+          <option value="En_cours">En attente</option>
+          <option value="Livré">en traitement</option>
+          <option value="terminé">terminé</option>
+        </select>
+      </div>
+  
+    <!-- --------------------------------------------------------TABLEAU------------------------------ -->
+    <div class="tablecontainer">
+      <table class="mat-elevation-z8 user-table tableS">
+        <!--  -->
+        <thead role="rowgroup">
+          <tr>
+            <th>Id</th>
+            <th>Nom client</th>
+            <th>Montant Commande</th>
+            <th>Payement méthode</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Modifier</th>
+            
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let order of orders; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ order.userEmail}}</td> 
+            <td>{{ order.totalAmount }} FCFA</td>
+            <td>{{ order.paymentDetails[0]?.method }}</td> 
+            <td class="orderstatus" [ngStyle]="{'color': order.status === 'en attente' ? 'green' : (order.status === 'en traitement' ? 'orange' : (order.status === 'terminé' ? 'red' : 'black'))}">
+              {{ order.status }}
+            </td>
+            <td>{{ order.dateLivraison | date:'dd/MM/yyyy' }}</td> 
+            <td>
+              <button class="btn_action" mat-icon-button (click)="openDialog(order)">
+                <i class="fa-regular fa-eye edit-icon  iconedesyeux"></i>
+              </button>
+            </td>
+            <!-- <td>
+              <button class="btn_action" mat-icon-button >
+                <i class="fa-regular fa-eye edit-icon  iconedesyeux"></i>
+              </button>
+            </td> -->
+          
+          </tr>
+        </tbody>
+      </table>
+  
+      <mat-paginator
+        [length]="10"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        class="pagination"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+  

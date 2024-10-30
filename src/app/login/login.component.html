@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="left-part">
+      <h2>Connecter vous pour accéder au dashboard</h2>
+      <form class="login-form" (ngSubmit)="login()">
+        <div class="input-group">
+          <label for="email">Adresse mail</label>
+          <div class="input-wrapper">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Veuillez entrer votre email" [(ngModel)]="email" name="email" required>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="password" required>
+          </div>
+        </div>
+        
+        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+        
+        <button type="submit" class="login-btn">Se connecter</button>
+      </form>
+    </div>
+    
+    <div class="right-part">
+      <img src="vraiimage1.png" alt="Illustration de connexion">
+    </div>
+  </div>
+  
+    
+</body>
+</html>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="left-part">
+      <h2>Connectez-vous pour accéder au dashboard</h2>
+      <form class="login-form" (ngSubmit)="login()">
+        <div class="input-group">
+          <label for="email">Adresse mail</label>
+          <div class="input-wrapper">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Veuillez entrer votre email" [(ngModel)]="email" name="email" required>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Entrez votre mot de passe" [(ngModel)]="password" name="password" required>
+          </div>
+        </div>
+        
+        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+        
+        <button type="submit" class="login-btn">Se connecter</button>
+        
+        
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      </form>
+    </div>
+    
+    <div class="right-part">
+      <img src="vraiimage1.png" alt="Illustration de connexion">
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,104 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container mat-elevation-z3">
+    <div class="caption">
+      <div class="leftS">
+        <h6>Liste des Variantes types |</h6>
+      </div>
+  
+      <div class="rightS">
+        <div class="searchetajout">
+          <!-- Barre de recherche -->
+          <div class="search-box">
+            <button class="btn-search"><i class="fas fa-search"></i></button>
+            <input
+              matInput
+              (input)="filterelement($event)"
+              placeholder="Search"
+              class="input-search"
+            />
+          </div>
+  
+          <!-- Bouton Ajouter une variante type -->
+          <button class="btn add-user-btn" (click)="openVariantTypeDialog()"> 
+            Ajouter une Variante type
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- --------------------------------------------------------TABLEAU------------------------------ -->
+    <div class="tablecontainer">
+      <table class="mat-elevation-z8 user-table tableS">
+        <!--  -->
+        <thead role="rowgroup">
+          <tr>
+            <th>Id</th>
+            <th>Nom Variante</th>
+            <th>Type de Variante</th>
+            <th>Date d'ajout</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <!-- Boucle sur les données récupérées depuis Firestore -->
+          <tr *ngFor="let variantType of variantTypes; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ variantType.nom }}</td>
+            <td>{{ variantType.type }}</td>
+            <!-- <td>{{ variantType.createdAt | date:'dd/MM/yyyy à HH:mm' }}</td> -->
+            <!-- <td>{{ variantType.createdAt }}</td> -->
+            <!-- <td>{{ variantType.createdAt | date:'dd/MM/yyyy \'à\' HH:mm' }}</td> -->
+            <td>{{ variantType.createdAt | date:"dd/MM/yyyy 'à' HH:mm" }}</td>
+
+
+
+            <td>
+              <button class="btn_action1" mat-icon-button (click)="openVariantTypeDialog(true, variantType)">
+                <i class="fa-regular fa-pen-to-square edit-icon"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn_action2" mat-icon-button (click)="deleteVariantType(variantType.id, variantType.nom)">
+                <i class="fa-solid fa-trash delete-icon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <mat-paginator
+        [length]="variantTypes.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        class="pagination"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+  

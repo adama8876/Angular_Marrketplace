@@ -1,0 +1,120 @@
+<h2 mat-dialog-title style="text-align: center;">{{ isEditMode ? 'Modifier le Produit' : 'Ajouter un Produit' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field class="full-width prouitformulaire">
+      <mat-label>Nom du produit</mat-label>
+      <input matInput formControlName="productName" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width1">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" class="descriptionproduit"></textarea>
+    </mat-form-field>
+
+    <!-- Conteneur des images -->
+    <div class="image-upload-container">
+      <!-- Champ de téléchargement d'image 1 -->
+      <div class="upload-image-container">
+        <input type="file" (change)="onFileSelected($event, 0)" />
+        <div *ngIf="selectedImages[0]">
+          <img [src]="selectedImages[0]" class="image-preview" />
+        </div>
+      </div>
+
+      <!-- Champ de téléchargement d'image 2 -->
+      <div class="upload-image-container">
+        <input type="file" (change)="onFileSelected($event, 1)" />
+        <div *ngIf="selectedImages[1]">
+          <img [src]="selectedImages[1]" class="image-preview" />
+        </div>
+      </div>
+
+      <!-- Champ de téléchargement d'image 3 -->
+      <div class="upload-image-container">
+        <input type="file" (change)="onFileSelected($event, 2)" />
+        <div *ngIf="selectedImages[2]">
+          <img [src]="selectedImages[2]" class="image-preview" />
+        </div>
+      </div>
+
+      <!-- Champ de téléchargement d'image 4 -->
+      <div class="upload-image-container">
+        <input type="file" (change)="onFileSelected($event, 3)" />
+        <div *ngIf="selectedImages[3]">
+          <img [src]="selectedImages[3]" class="image-preview" />
+        </div>
+      </div>
+    </div>
+
+    <mat-form-field class="full-width">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="category" (selectionChange)="onCategoryChange($event.value)">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Sous-catégorie</mat-label>
+      <mat-select formControlName="subCategory">
+        <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory.id">
+          {{ subCategory.nom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Prix</mat-label>
+      <input matInput type="number" formControlName="price" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Quantité</mat-label>
+      <input matInput type="number" formControlName="quantity" />
+    </mat-form-field>
+
+    <div *ngFor="let variantGroup of variantGroups; let i = index">
+      <mat-form-field class="full-width">
+        <mat-label>Type de variante</mat-label>
+        <mat-select (selectionChange)="onVariantTypeChange($event.value, i)">
+          <mat-option *ngFor="let variantType of variantTypes" [value]="variantType.id">
+            {{ variantType.nom }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <div *ngIf="variantGroup.variantItems.length > 0">
+        <label>Variantes disponibles :</label>
+        <div *ngFor="let variant of variantGroup.variantItems">
+          <mat-checkbox 
+            [value]="variant.id" 
+            (change)="onVariantCheckboxChange($event, variant.id, i)"
+            [checked]="variantGroup.options.includes(variant.nom)"> <!-- Vérifier si la variante est sélectionnée -->
+            {{ variant.nom }}
+          </mat-checkbox>
+        </div>
+      </div>
+    
+      <!-- Button to remove this variant group -->
+      <button mat-button (click)="removeVariantGroup(i)">Supprimer cette variante</button>
+    </div>
+    
+    
+    <!-- Button to add a new variant group -->
+    <button mat-button (click)="addVariantGroup()">Ajouter un type de variante</button>
+    
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">Annuler</button>
+  <button mat-button (click)="onSubmit()" [disabled]="!productForm.valid" cdkFocusInitial>{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
+</mat-dialog-actions>
+
+
+<div *ngIf="!productForm.valid && productForm.touched" class="error">
+  <p>Veuillez remplir tous les champs obligatoires.</p>
+</div>
+

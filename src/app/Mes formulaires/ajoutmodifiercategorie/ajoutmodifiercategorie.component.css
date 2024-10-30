@@ -1,0 +1,129 @@
+:is(mat-form-field, mat-dialog-content, input), mat-select {
+  width: 100%;
+  color: #374151;
+  font-weight: bold;
+  caret-color: #292828;
+}
+
+mat-dialog-content {
+  background: #fff;
+}
+
+.mat-title {
+  margin-top: 25px;
+  text-align: center;
+  color: rgb(66, 66, 65);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn_close {
+  color: #e22424;
+  cursor: pointer;
+}
+
+.btn {
+  width: 40%;
+}
+
+.reset,
+.submit {
+  background: #fff;
+  color: #ee4d2d;
+  border: 1px solid #ee4d2d;
+}
+
+.reset:hover,
+.submit:hover {
+  background: #ee4d2d;
+  color: #fff;
+}
+
+.mat-mdc-dialog-surface {
+  background: #e22424;
+}
+
+mat-dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+  width: 90%;
+}
+
+.mdc-text-field--filled {
+  background-color: red;
+}
+
+/*-----------------------------------*/
+
+mat-label {
+  color: #292828;
+}
+
+input {
+  font-size: 24px;
+  color: #292828;
+}
+
+mat-option {
+  font-size: 14px;
+  color: #292828;
+}
+
+/* Style du champ de téléchargement d'image avec un trait pointillé (dashed) */
+.image-upload-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.upload-image-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.image-upload-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  border: 2px dashed #ddd; /* Trait en pointillé (dashed) */
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajuste l'image pour remplir le carré */
+  border-radius: 8px;
+}
+
+input[type="file"] {
+  display: none; /* Masquer le champ de fichier classique */
+}
+
+
+
+
+
+
+
+
+
+::ng-deep .mat-mdc-dialog-surface {
+  width: 500px !important;  /* Largeur personnalisée */
+  height: 500px !important; /* Hauteur personnalisée */
+  max-height: 90vh;         /* Limite la hauteur à 90% de la fenêtre */
+  border-radius: 10px;      /* Ajout d'arrondi */
+}

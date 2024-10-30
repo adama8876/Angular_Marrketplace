@@ -1,0 +1,69 @@
+<mat-dialog-content class="dialog-content full-height">
+    <h1 class="dialog-title">Détails de la commande</h1>
+
+    <div class="card info-section">
+      <div class="card-header">
+        <h3>Informationss sur le client</h3>
+      </div>
+      <div class="card-content">
+        <!-- <p><strong>ID:</strong> {{ data.id }}</p> -->
+        <p><strong>Email:</strong> {{ data.userEmail }}, </p>
+        <p><strong>Téléphone:</strong> {{ data.userPhone }}, </p>
+        <p><strong>Montant Total:</strong> {{ data.totalAmount }} FCFA</p>
+        <p><strong>Status:</strong> {{ data.status }}</p>
+      </div>
+    </div>
+
+    <div class="card address-section">
+      <div class="card-header">
+        <h3>Adresse de livraison</h3>
+      </div>
+      <div class="card-content">
+        <p>{{ data.adresse }}</p>
+      </div>
+    </div>
+
+    <div class="card items-section">
+      <div class="card-header">
+        <h3>Produits de la commande</h3>
+      </div>
+      <div class="card-content">
+        <ul>
+          
+          <li *ngFor="let item of vendorProducts" class="product-item">
+            <p><strong>Id du produit:</strong> {{ item.productId }}</p>
+            <p><strong>Prix:</strong> {{ item.price }} FCFA</p>
+            <p><strong>Quantité:</strong> {{ item.quantity }}</p>
+            <p><strong>Status:</strong>
+              <select [(ngModel)]="item.status" (change)="onStatusChange(item)" [disabled]="item.status === 'livré'">
+                <option [value]="item.status">{{ item.status }}</option>
+                <option value="livré">Livré</option>
+              </select>
+            </p>
+            
+            <p><strong>Variantes:</strong> {{ item.variant }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+      
+
+    <div class="card payment-section">
+      <div class="card-header">
+        <h3>Détails du paiement</h3>
+      </div>
+      <div class="card-content">
+        <ul>
+          <li *ngFor="let payment of data.paymentDetails">
+            <p><strong>Méthode:</strong> {{ payment.method }}</p>
+            <p><strong>Montant payé:</strong> {{ payment.sousTotal }} FCFA</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-button (click)="onClose()">Fermer</button>
+    </div>
+</mat-dialog-content>

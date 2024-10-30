@@ -1,0 +1,106 @@
+/* Le conteneur prend toute la largeur de la fenêtre sans couleur de fond */
+.container {
+  width: 97%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+/* Les éléments internes avec une couleur de fond */
+.item {
+  display: flex;
+  flex-direction: column; /* Organise les éléments en colonne pour avoir le chiffre en bas */
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  width: 250px; /* Largeur des divs */
+  height: 120px;
+  border-radius: 10px; /* Coins arrondis */
+  padding: 10px;
+}
+
+/* Conteneur pour l'icône et le texte */
+.top-row {
+  margin-top: 20px;
+  display: flex;
+  align-items: center; /* Alignement des icônes et du texte sur la même ligne */
+  justify-content: center;
+  width: 100%; /* Assure que l'alignement occupe toute la largeur */
+}
+
+/* Style pour l'icône */
+.monicone {
+  font-size: 40px;
+  color: #fff;
+  margin-right: 30px; /* Espace entre l'icône et le texte */
+}
+
+/* Style pour le texte */
+.item span {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Style pour le chiffre */
+.statistique {
+  margin-top: 10px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+
+
+
+.mesgraphescontainer {
+  margin: 60px auto;
+  display: flex;
+  justify-content: space-between; /* Ajoute de l'espace entre les graphiques */
+  align-items: center; /* Centre les graphiques verticalement */
+  width: 95%; /* Utilise toute la largeur disponible du conteneur parent */
+  gap: 10px; /* Ajoute un espacement entre les graphiques */
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  
+}
+
+.line-chart {
+  flex: 8;
+  max-width: 70%; 
+}
+
+.doughnut-chart {
+  flex: 2; /* 20% de l'espace total */
+  /* max-width: 20%; Limite la largeur maximale pour les grands écrans */
+}
+
+/* Ajoute une taille spécifique aux graphiques */
+canvas {
+  width: 100% !important; /* S'assure que le graphique utilise toute la largeur du conteneur */
+  height: auto !important; /* Garde le ratio de hauteur automatique */
+}
+
+/* Media queries pour les petits écrans */
+@media (max-width: 768px) {
+  .mesgraphescontainer {
+    flex-direction: column; /* Empile les graphiques verticalement */
+    align-items: stretch; /* Étire les graphiques pour prendre toute la largeur */
+
+  }
+
+  
+
+  .line-chart, .doughnut-chart {
+    max-width: 100%; /* Permet à chaque graphique de s'étendre à 100% de la largeur */
+  }
+}
+

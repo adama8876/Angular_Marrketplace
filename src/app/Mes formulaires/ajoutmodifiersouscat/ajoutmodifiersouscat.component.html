@@ -1,0 +1,37 @@
+<h6 mat-dialog-title class="mat-title">
+    {{ isEditMode ? "Modifier la Sous-catégorie" : "Ajouter une Sous-catégorie" }}
+    <mat-icon mat-button (click)="onClose()" class="btn_close">close</mat-icon>
+  </h6>
+  
+  <mat-dialog-content class="mat-typography ajoutSousCategorie">
+    <form [formGroup]="sousCategorieForm" class="popup">
+      <!-- Select pour choisir la catégorie -->
+      <mat-form-field class="full-width">
+        <mat-label>Catégorie</mat-label>
+        <mat-select formControlName="categorieId">
+          <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Input pour le nom de la sous-catégorie -->
+      <mat-form-field class="full-width">
+        <mat-label>Nom de la sous-catégorie</mat-label>
+        <input matInput placeholder="Nom de la sous-catégorie" formControlName="nom" />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="center">
+    <button mat-raised-button (click)="onReset()" class="btn reset">Reset</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="sousCategorieForm.invalid"
+      (click)="onSave()"
+      class="btn submit"
+    >
+      {{ isEditMode ? "Modifier" : "Ajouter" }}
+    </button>
+  </mat-dialog-actions>
+  

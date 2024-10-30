@@ -1,0 +1,104 @@
+
+
+ <!-- Sélection de la catégorie
+ //     <select [(ngModel)]="selectedCategoryId" name="categorySelect" required>
+  //       <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+  //     </select>
+  
+      Formulaire pour ajouter une sous-catégorie
+       <form (ngSubmit)="addSubcategory()">
+         <label for="subcategoryName">Nom de la sous-catégorie:</label>
+        <input id="subcategoryName" [(ngModel)]="subcategory.name" name="name" type="text" required>
+  
+        <button type="submit">Ajouter Sous-Catégorie</button>
+      </form>
+   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="table-container mat-elevation-z3">
+    <div class="caption">
+      <div class="leftS"><h5>Liste des Sous catégories</h5></div>
+  
+      <div class="rightS">
+        <div class="searchetajout">
+          <div class="search-box">
+            <button class="btn-search"><i class="fas fa-search"></i></button>
+            <input
+              matInput
+              (input)="filterelement($event)"
+              placeholder="Search"
+              class="input-search"
+            />
+          </div>
+          <button class="btn add-user-btn" (click)="opendialog()" *ngIf="userRole !== 'vendeur'">
+            Ajout de sous catégorie
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="tablecontainer">
+      <table class="mat-elevation-z8 user-table tableS">
+        <thead role="rowgroup">
+          <tr>
+            <th>Id</th>
+            <th>Nom sous-catégorie</th>
+            <th>Catégorie Parent</th>
+            <th style="text-align: center;">Date d'ajout</th>
+            <th *ngIf="userRole !== 'vendeur'">Modifier</th>
+            <th *ngIf="userRole !== 'vendeur'">Supprimer</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let subcategory of subcategories; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ subcategory.nom }}</td>
+            <td>{{  subcategory.categoryName}}</td>
+            <td>{{ subcategory.dateAjout | date: 'dd/MM/yyyy' }}</td>
+            <td class="actionC">
+              <button class="btn_action" mat-icon-button (click)="updateSubcategory(subcategory.id)" *ngIf="userRole !== 'vendeur'">
+                <i class="fa-regular fa-pen-to-square edit-icon"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn_action1" mat-icon-button (click)="onDelete(subcategory.id, subcategory.nom)" *ngIf="userRole !== 'vendeur'">
+                <i class="fa-solid fa-trash delete-icon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <mat-paginator
+        [length]="subcategories.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        class="pagination"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+  

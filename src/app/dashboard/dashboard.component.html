@@ -1,0 +1,45 @@
+<div class="container" >
+  <div class="item" style="background-color: #ec7d7b;">
+    <div class="top-row">
+      <i class="fa-solid fa-user monicone"></i>
+      <span>Utilisateurs</span>
+    </div>
+    <h3 class="statistique">{{userCount}}</h3>
+  </div>
+  <div class="item" style="background-color: #add8e6;">
+    <div class="top-row">
+      <i class="fa-solid fa-shop monicone"></i>
+      <span>Boutique</span>
+    </div>
+    <h3 class="statistique">90</h3>
+  </div>
+  <div class="item" style="background-color: #008080;">
+    <div class="top-row">
+      <i class="fa-solid fa-cart-shopping monicone"></i>
+      <span>Produits</span>
+    </div>
+    <h3 class="statistique">{{ productCount }}</h3>
+  </div>
+  <div class="item" style="background-color: #ffeb3b;">
+    <div class="top-row">
+      <i class="fa-solid fa-list monicone"></i>
+      <span>Catégories</span>
+    </div>
+    <h3 class="statistique">{{ categoryCount }}</h3>
+  </div>
+</div>
+
+
+<div class="mesgraphescontainer">
+  <div class="chart-container line-chart">
+    <canvas id="lineChart"></canvas>
+  </div>
+  
+  <div class="chart-container doughnut-chart">
+    <canvas id="doughnutChart"></canvas>
+  </div>
+</div>
+
+
+
+
